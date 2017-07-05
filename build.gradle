@@ -1,0 +1,54 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {url "https://repo.spring.io/snapshot"}
+        maven {url "https://maven.eveoh.nl/content/repositories/releases"}
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.1.BUILD-SNAPSHOT")
+        classpath("nl.eveoh:gradle-aspectj:1.6")
+    }
+}
+
+project.ext {
+    aspectjVersion = '1.8.4'
+}
+
+apply plugin: 'spring-boot'
+apply plugin: 'aspectj'
+
+/*
+jar {
+	baseName = "spring_boot_test"
+	version = '0.1'
+}
+*/
+
+repositories {
+    jcenter()
+    maven {url "https://repo.spring.io/snapshot"}
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1")
+    compile("mysql:mysql-connector-java")
+    //compile("org.json:json")
+    compile("org.thymeleaf:thymeleaf-spring4")
+
+    compile("com.google.code.gson:gson:2.3")
+    compile("net.sf.json-lib:json-lib:2.4:jdk15")
+    compile("org.simpleframework:simple-xml:2.7")
+    compile("dom4j:dom4j:1.6.1")
+
+    compile("commons-dbcp:commons-dbcp:1.4")
+    compile("org.aspectj:aspectjweaver:1.8.6")
+
+    compile("org.projectlombok:lombok:1.16.12")
+
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+springBoot {
+    mainClass = "com.example.project.Application"
+}
